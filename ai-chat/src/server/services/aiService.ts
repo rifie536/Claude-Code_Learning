@@ -8,7 +8,9 @@ export class AIService {
     onComplete?: () => void
   ): Promise<void> {
     try {
-      const stream = await chatAgent.stream(conversationHistory)
+      // Mastraのstream APIに渡す形式に変換
+      const messages = conversationHistory.map(msg => msg.content)
+      const stream = await chatAgent.stream(messages)
 
       for await (const chunk of stream.textStream) {
         onChunk(chunk)
@@ -27,7 +29,9 @@ export class AIService {
     conversationHistory: Array<{ role: string; content: string }>
   ): Promise<string> {
     try {
-      const response = await chatAgent.generate(conversationHistory)
+      // Mastraのgenerate APIに渡す形式に変換
+      const messages = conversationHistory.map(msg => msg.content)
+      const response = await chatAgent.generate(messages)
       return response.text || ''
     } catch (error) {
       console.error('AI Service Error:', error)

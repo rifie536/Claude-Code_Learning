@@ -74,3 +74,94 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* Markdown Prose スタイル */
+@layer utilities {
+  .prose {
+    @apply text-gray-900 dark:text-gray-100 max-w-none;
+  }
+
+  .prose p {
+    @apply my-3;
+  }
+
+  .prose h1 {
+    @apply text-3xl font-bold my-4;
+  }
+
+  .prose h2 {
+    @apply text-2xl font-bold my-3;
+  }
+
+  .prose h3 {
+    @apply text-xl font-bold my-3;
+  }
+
+  .prose code {
+    @apply bg-gray-100 dark:bg-gray-800 px-1.5 py-0.5 rounded text-sm;
+  }
+
+  .prose pre {
+    @apply my-4 rounded-lg overflow-x-auto;
+  }
+
+  .prose pre code {
+    @apply bg-transparent p-0;
+  }
+
+  .prose ul {
+    @apply list-disc list-inside my-3;
+  }
+
+  .prose ol {
+    @apply list-decimal list-inside my-3;
+  }
+
+  .prose blockquote {
+    @apply border-l-4 border-gray-300 dark:border-gray-600 pl-4 my-3 italic;
+  }
+
+  .prose a {
+    @apply text-blue-600 dark:text-blue-400 hover:underline;
+  }
+
+  .prose strong {
+    @apply font-bold;
+  }
+
+  .prose em {
+    @apply italic;
+  }
+
+  .prose table {
+    @apply w-full my-4 border-collapse;
+  }
+
+  .prose th {
+    @apply border border-gray-300 dark:border-gray-600 px-4 py-2 bg-gray-100 dark:bg-gray-800 font-bold;
+  }
+
+  .prose td {
+    @apply border border-gray-300 dark:border-gray-600 px-4 py-2;
+  }
+}
+
+/* カスタムスクロールバー */
+@layer utilities {
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-track {
+    @apply bg-gray-100 dark:bg-gray-800;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    @apply bg-gray-300 dark:bg-gray-600 rounded-full;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-thumb:hover {
+    @apply bg-gray-400 dark:bg-gray-500;
+  }
+}

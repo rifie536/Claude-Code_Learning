@@ -402,12 +402,12 @@
 
 ---
 
-## Phase 3: フロントエンド実装
+## Phase 3: フロントエンド実装 ✅
 
 ### 3.1 グローバル設定
 
 **テーマプロバイダーの設定:**
-- [ ] `src/components/providers/ThemeProvider.tsx` の実装
+- [x] `src/components/providers/ThemeProvider.tsx` の実装
   ```typescript
   'use client'
   import { ThemeProvider as NextThemesProvider } from 'next-themes'
@@ -422,20 +422,20 @@
   ```
 
 **ルートレイアウトの設定:**
-- [ ] `src/app/layout.tsx` の実装
+- [x] `src/app/layout.tsx` の実装
   - ThemeProvider の組み込み
   - グローバルスタイルの適用
   - フォント設定
 
 **グローバルスタイル:**
-- [ ] `src/app/globals.css` の調整
+- [x] `src/app/globals.css` の調整
   - Tailwind directives
   - ダークモード用カスタムCSS変数
   - スクロールバースタイル
 
 ### 3.2 APIクライアントの作成
 
-- [ ] `src/lib/api/client.ts` の実装
+- [x] `src/lib/api/client.ts` の実装
   ```typescript
   export class APIClient {
     async sendMessage(conversationId: string | undefined, message: string): Promise<ReadableStream>
@@ -451,34 +451,34 @@
 ### 3.3 UIコンポーネントの実装
 
 **共通UIコンポーネント:**
-- [ ] ダークモードトグル: `src/components/ui/ThemeToggle.tsx`
-- [ ] ローディングスピナー: `src/components/ui/LoadingSpinner.tsx`
-- [ ] エラー表示: `src/components/ui/ErrorMessage.tsx`
+- [x] ダークモードトグル: `src/components/ui/ThemeToggle.tsx`
+- [x] ローディングスピナー: `src/components/ui/LoadingSpinner.tsx`
+- [x] エラー表示: `src/components/ui/ErrorMessage.tsx`
 
 **チャット用コンポーネント（TDD推奨）:**
 
-- [ ] `src/components/chat/ChatMessage.tsx`
+- [x] `src/components/chat/ChatMessage.tsx`
   - ユーザーメッセージ/AIメッセージの表示
   - Markdownレンダリング
   - コードブロックのシンタックスハイライト
   - コピーボタン
   - テスト: `tests/unit/components/ChatMessage.test.tsx`
 
-- [ ] `src/components/chat/ChatInput.tsx`
+- [x] `src/components/chat/ChatInput.tsx`
   - テキストエリア
   - 送信ボタン
   - ローディング状態
   - Enter キーでの送信（Shift+Enterで改行）
   - テスト: `tests/unit/components/ChatInput.test.tsx`
 
-- [ ] `src/components/chat/ChatSidebar.tsx`
+- [x] `src/components/chat/ChatSidebar.tsx`
   - 会話履歴一覧
   - 新規会話ボタン
   - 会話削除ボタン
   - モバイル対応（ハンバーガーメニュー）
   - テスト: `tests/unit/components/ChatSidebar.test.tsx`
 
-- [ ] `src/components/chat/ChatContainer.tsx`
+- [x] `src/components/chat/ChatContainer.tsx`
   - メッセージリストの表示
   - 自動スクロール
   - ストリーミングメッセージの表示
@@ -486,7 +486,7 @@
 
 ### 3.4 カスタムフックの実装
 
-- [ ] `src/hooks/useChat.ts`
+- [x] `src/hooks/useChat.ts`
   ```typescript
   export function useChat(conversationId?: string) {
     // メッセージ送信
@@ -502,7 +502,7 @@
   ```
   - テスト: `tests/unit/hooks/useChat.test.ts`
 
-- [ ] `src/hooks/useConversations.ts`
+- [x] `src/hooks/useConversations.ts`
   ```typescript
   export function useConversations() {
     // 会話一覧の取得
@@ -520,12 +520,12 @@
 ### 3.5 ページの実装
 
 **ホームページ:**
-- [ ] `src/app/page.tsx` の実装
+- [x] `src/app/page.tsx` の実装
   - 新規会話の開始
   - または会話一覧へリダイレクト
 
 **チャットページ:**
-- [ ] `src/app/chat/[id]/page.tsx` の実装
+- [x] `src/app/chat/[id]/page.tsx` の実装
   - ChatContainer
   - ChatInput
   - ChatSidebar
