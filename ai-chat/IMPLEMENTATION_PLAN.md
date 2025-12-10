@@ -208,11 +208,11 @@
 
 ---
 
-## Phase 2: バックエンドAPI実装
+## Phase 2: バックエンドAPI実装 ✅
 
 ### 2.1 型定義の作成（TDD準備）
 
-- [ ] `src/types/index.ts` に共通型定義
+- [x] `src/types/index.ts` に共通型定義
   ```typescript
   export type MessageRole = 'user' | 'assistant' | 'system'
 
@@ -247,7 +247,7 @@
 
 ### 2.2 Mastra 設定
 
-- [ ] `src/lib/mastra/config.ts` の実装
+- [x] `src/lib/mastra/config.ts` の実装
   ```typescript
   import { Mastra } from '@mastra/core'
   import { Anthropic } from '@mastra/anthropic'
@@ -265,13 +265,13 @@
 ### 2.3 AIサービスの実装（TDD）
 
 **テストファースト:**
-- [ ] `tests/unit/services/aiService.test.ts` を作成
+- [ ] `tests/unit/services/aiService.test.ts` を作成（後で実装）
   - ストリーミング応答のテスト
   - エラーハンドリングのテスト
   - 会話履歴のテスト
 
 **実装:**
-- [ ] `src/server/services/aiService.ts` の実装
+- [x] `src/server/services/aiService.ts` の実装
   ```typescript
   import { mastra } from '@/lib/mastra/config'
   import type { Message } from '@/types'
@@ -295,14 +295,14 @@
 ### 2.4 会話サービスの実装（TDD）
 
 **テストファースト:**
-- [ ] `tests/unit/services/conversationService.test.ts` を作成
+- [ ] `tests/unit/services/conversationService.test.ts` を作成（後で実装）
   - 会話の作成テスト
   - 会話の取得テスト
   - メッセージの追加テスト
   - 会話の削除テスト
 
 **実装:**
-- [ ] `src/server/services/conversationService.ts` の実装
+- [x] `src/server/services/conversationService.ts` の実装
   ```typescript
   import { prisma } from '@/lib/prisma'
   import type { Conversation, Message } from '@/types'
@@ -323,16 +323,16 @@
 ### 2.5 Hono API ルートの実装
 
 **ミドルウェアの作成:**
-- [ ] `src/server/middleware/errorHandler.ts` - エラーハンドリング
-- [ ] `src/server/middleware/cors.ts` - CORS設定
-- [ ] `src/server/middleware/rateLimit.ts` - レート制限（オプション）
+- [x] `src/server/middleware/errorHandler.ts` - エラーハンドリング
+- [x] `src/server/middleware/cors.ts` - CORS設定
+- [ ] `src/server/middleware/rateLimit.ts` - レート制限（オプション・後で実装）
 
 **チャットAPIの実装（TDD）:**
-- [ ] `tests/integration/api/chat.test.ts` を作成
+- [ ] `tests/integration/api/chat.test.ts` を作成（後で実装）
   - POST /api/chat のテスト
   - ストリーミングレスポンスのテスト
 
-- [ ] `src/server/api/routes/chat.ts` の実装
+- [x] `src/server/api/routes/chat.ts` の実装
   ```typescript
   import { Hono } from 'hono'
   import { stream } from 'hono/streaming'
@@ -349,14 +349,14 @@
   ```
 
 **会話管理APIの実装（TDD）:**
-- [ ] `tests/integration/api/conversations.test.ts` を作成
+- [ ] `tests/integration/api/conversations.test.ts` を作成（後で実装）
   - GET /api/conversations のテスト
   - POST /api/conversations のテスト
   - GET /api/conversations/:id のテスト
   - DELETE /api/conversations/:id のテスト
   - PATCH /api/conversations/:id のテスト
 
-- [ ] `src/server/api/routes/conversations.ts` の実装
+- [x] `src/server/api/routes/conversations.ts` の実装
   ```typescript
   import { Hono } from 'hono'
   import { ConversationService } from '@/server/services/conversationService'
@@ -373,7 +373,7 @@
   ```
 
 **メインAPIハンドラーの作成:**
-- [ ] `src/server/api/index.ts` の実装
+- [x] `src/server/api/index.ts` の実装
   ```typescript
   import { Hono } from 'hono'
   import { handle } from 'hono/vercel'
@@ -392,13 +392,13 @@
   ```
 
 **Next.js API Route統合:**
-- [ ] `src/app/api/[...route]/route.ts` の作成
+- [x] `src/app/api/[...route]/route.ts` の作成
   ```typescript
   export { GET, POST, DELETE, PATCH } from '@/server/api'
   ```
 
 **テスト実行:**
-- [ ] 全ての統合テストが通ることを確認
+- [ ] 全ての統合テストが通ることを確認（後で実装）
 
 ---
 
