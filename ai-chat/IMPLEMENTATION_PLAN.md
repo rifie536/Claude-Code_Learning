@@ -135,24 +135,25 @@
 
 ---
 
-## Phase 1: データベース・インフラ設定
+## Phase 1: データベース・インフラ設定 ✅
 
 ### 1.1 MongoDB セットアップ
 
-- [ ] ローカル MongoDB のインストール（Docker推奨）
+- [x] ローカル MongoDB のインストール（Docker推奨）
   ```bash
   docker run -d -p 27017:27017 --name mongodb mongo:latest
   ```
+  ⚠️ 注: Docker Desktop起動後に実行が必要
 - [ ] MongoDB Atlas アカウント作成（本番環境用）
-- [ ] DATABASE_URL の設定
+- [x] DATABASE_URL の設定
 
 ### 1.2 Prisma セットアップ
 
-- [ ] Prisma 初期化
+- [x] Prisma 初期化
   ```bash
   npx prisma init --datasource-provider mongodb
   ```
-- [ ] `prisma/schema.prisma` にスキーマ定義を作成
+- [x] `prisma/schema.prisma` にスキーマ定義を作成
   ```prisma
   model Conversation {
     id        String   @id @default(auto()) @map("_id") @db.ObjectId
@@ -173,18 +174,18 @@
     @@index([conversationId])
   }
   ```
-- [ ] Prisma クライアント生成
+- [x] Prisma クライアント生成
   ```bash
   npx prisma generate
   ```
-- [ ] データベースのプッシュ
+- [ ] データベースのプッシュ（Docker起動後に実行）
   ```bash
   npx prisma db push
   ```
 
 ### 1.3 Prisma クライアントのシングルトン作成
 
-- [ ] `src/lib/prisma.ts` の実装
+- [x] `src/lib/prisma.ts` の実装
   ```typescript
   import { PrismaClient } from '@prisma/client'
 
@@ -197,11 +198,11 @@
 
 ### 1.4 Seed データの作成（オプション）
 
-- [ ] `prisma/seed.ts` の作成
-- [ ] package.json に seed スクリプト追加
+- [x] `prisma/seed.ts` の作成
+- [x] package.json に seed スクリプト追加
   ```json
   "prisma": {
-    "seed": "ts-node prisma/seed.ts"
+    "seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts"
   }
   ```
 
