@@ -64,7 +64,7 @@ export class APIClient {
     }
 
     const data = await response.json()
-    return data.conversations
+    return data
   }
 
   /**
@@ -86,7 +86,7 @@ export class APIClient {
     }
 
     const data = await response.json()
-    return data.conversation
+    return data
   }
 
   /**
@@ -99,6 +99,7 @@ export class APIClient {
       headers: {
         'Content-Type': 'application/json',
       },
+      body: JSON.stringify({}),
     })
 
     if (!response.ok) {
@@ -107,7 +108,7 @@ export class APIClient {
     }
 
     const data = await response.json()
-    return data.conversation
+    return data
   }
 
   /**
@@ -149,7 +150,7 @@ export class APIClient {
     }
 
     const data = await response.json()
-    return data.conversation
+    return data
   }
 
   /**
