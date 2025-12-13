@@ -75,7 +75,7 @@ export function ChatMessage({ message }: ChatMessageProps) {
                       {copied ? 'コピーしました!' : 'コピー'}
                     </button>
                     <SyntaxHighlighter
-                      style={oneDark as any}
+                      style={oneDark}
                       language={match[1]}
                       PreTag="div"
                     >

@@ -2,6 +2,7 @@ import { Hono } from 'hono'
 import { handle } from 'hono/vercel'
 import { errorHandler } from '@/server/middleware/errorHandler'
 import { corsMiddleware } from '@/server/middleware/cors'
+import { apiRateLimit } from '@/server/middleware/rateLimit'
 import chat from './routes/chat'
 import conversations from './routes/conversations'
 
@@ -9,6 +10,7 @@ const app = new Hono().basePath('/api')
 
 // ミドルウェア
 app.use('*', corsMiddleware)
+app.use('*', apiRateLimit)
 app.use('*', errorHandler)
 
 // ヘルスチェック

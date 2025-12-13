@@ -13,8 +13,21 @@ export default function ChatError({ error, reset }: ErrorProps) {
   const router = useRouter()
 
   useEffect(() => {
-    // エラーログをコンソールに出力（本番環境では外部サービスに送信することを推奨）
-    console.error('Chat error caught by error boundary:', error)
+    // エラーの詳細情報をログに出力
+    const errorInfo = {
+      message: error.message,
+      digest: error.digest,
+      stack: error.stack,
+      timestamp: new Date().toISOString(),
+      userAgent: typeof navigator !== 'undefined' ? navigator.userAgent : 'unknown',
+      url: typeof window !== 'undefined' ? window.location.href : 'unknown',
+      context: 'chat-page',
+    }
+
+    console.error('Chat error caught by error boundary:', errorInfo)
+
+    // 本番環境では外部サービス（Sentry等）に送信することを推奨
+    // 例: Sentry.captureException(error)
   }, [error])
 
   const handleNewChat = () => {

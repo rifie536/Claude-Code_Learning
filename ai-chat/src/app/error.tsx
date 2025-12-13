@@ -10,8 +10,20 @@ interface ErrorProps {
 
 export default function Error({ error, reset }: ErrorProps) {
   useEffect(() => {
-    // エラーログをコンソールに出力（本番環境では外部サービスに送信することを推奨）
-    console.error('Error caught by error boundary:', error)
+    // エラーの詳細情報をログに出力
+    const errorInfo = {
+      message: error.message,
+      digest: error.digest,
+      stack: error.stack,
+      timestamp: new Date().toISOString(),
+      userAgent: typeof navigator !== 'undefined' ? navigator.userAgent : 'unknown',
+      url: typeof window !== 'undefined' ? window.location.href : 'unknown',
+    }
+
+    console.error('Error caught by error boundary:', errorInfo)
+
+    // 本番環境では外部サービス（Sentry等）に送信することを推奨
+    // 例: Sentry.captureException(error)
   }, [error])
 
   return (

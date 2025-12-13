@@ -80,6 +80,12 @@ export class ConversationService {
 
     return conversation as Conversation
   }
+
+  async deleteMessage(id: string): Promise<void> {
+    await prisma.message.delete({
+      where: { id },
+    })
+  }
 }
 
 export const conversationService = new ConversationService()
